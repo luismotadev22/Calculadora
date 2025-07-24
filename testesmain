@@ -47,27 +47,31 @@ def teste_operacoes_diversas(self):
             self.assertTrue(math.isnan(func(5, 0, '/')))
             self.assertTrue(math.isnan(func(5, 0, '%')))
 
-            # Teste operador inválido
+            # Teste operador inválido - fazer três testes para todas as versões
             self.assertTrue(math.isnan(func(2, 3, '$')))
             self.assertTrue(math.isnan(func(2, 5, '#')))
             self.assertTrue(math.isnan(func(0, 2, 'qwe')))
 
-            # Teste números de vírgula flutuante
+            # Teste números de vírgula flutuante - fazer três testes para todas as versões
             self.assertAlmostEqual(func(2.5, 1.5, '+'), 4.0)
             self.assertAlmostEqual(func(4.5, 1.5, '-'), 3.0)
             self.assertAlmostEqual(func(5.5, 1.5, '*'), 8.25)
 
-            # Teste números negativos
+            # Teste números negativos - fazer 3 testes para todas as versões
             self.assertEqual(func(-2, 3, '*'), -6)
+            self.assertEqual(func(6, -3, '/'), -2.0)
+            self.assertEqual(func(-6, -3, '/'), 2.0)
 
-            # Teste números negativos com divisão e módulo
+            # Teste números negativos com divisão e módulo - fazer 3 testes para todas as versões
             self.assertEqual(func(-6, 3, '/'), -2.0)
             self.assertEqual(func(-7, 3, '%'), 2.0)
 
-            # Teste números negativos com exponenciação
+            # Teste números negativos com exponenciação, testar para todas as versões
             self.assertEqual(func(-2, 3, '^'), -8)
+            self.assertEqual(func(7, -3, '%'), -2.0)
+            self.assertEqual(func(-7, -3, '%'), -1.0)
 
-            # Teste números negativos com exponenciação de zero
+            # Teste números negativos com exponenciação de zero. testar para todas as versões
             self.assertEqual(func(0, 3, '^'), 0)
 
 
